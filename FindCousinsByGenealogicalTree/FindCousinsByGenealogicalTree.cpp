@@ -28,8 +28,10 @@ int main()
 }
 
 
-string read_xml_file(char* file_name) {
-    if (!std::ifstream(file_name)) {
+string read_xml_file(char* file_name) 
+{
+    if (!std::ifstream(file_name)) 
+    {
         throw FileNotFoundException(file_name);
     }
     file<> xml_file(file_name);
@@ -37,15 +39,19 @@ string read_xml_file(char* file_name) {
 }
 
 
-xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_name) {
+xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_name) 
+{
     xml_attribute<>* attr = node->first_attribute(attribute_name.c_str());
-    if (attr) {
+    if (attr) 
+    {
         return node;
     }
 
-    for (xml_node<>* child_node = node->first_node(); child_node; child_node = child_node->next_sibling()) {
+    for (xml_node<>* child_node = node->first_node(); child_node; child_node = child_node->next_sibling()) 
+    {
         xml_node<>* node = find_node_with_attribute(child_node, attribute_name);
-        if (node) {
+        if (node) 
+        {
             return node;
         }
     }
@@ -54,12 +60,15 @@ xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_n
 }
 
 
-unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name) {
+unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name) 
+{
     if (node->first_attribute(attribute_name.c_str())->value()) {
-        try {
+        try 
+        {
             return stoul(node->first_attribute(attribute_name.c_str())->value());
         }
-        catch (runtime_error ex) {
+        catch (runtime_error ex) 
+        {
             throw KinshipDegreeException("Степень родства не является натуральным числом");
         }
     }
@@ -67,33 +76,42 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
 }
 
 
-tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation) {
-    if (generation > 0) {
+tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation) 
+{
+    if (generation > 0) 
+    {
         return get_parent_and_child_by_generation(parent->parent(), parent, generation - 1);
     }
     return { parent, child };
 }
 
 
-void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins) {
-    if (generation > 0) {
-        for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) {
+void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins) 
+{
+    if (generation > 0) 
+    {
+        for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) 
+        {
             get_children_at_generation(child, generation - 1, cousins);
         }
     }
-    else {
+    else 
+    {
         cousins.push_back(parent);
     }
 }
 
 
-void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) {
+void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) 
+{
     std::ofstream outfile(file_name);
 
-    if (!outfile.is_open()) {
+    if (!outfile.is_open()) 
+    {
         throw runtime_error(file_name);
     }
-    for (xml_node<>* cousin : cousins) {
+    for (xml_node<>* cousin : cousins) 
+    {
         outfile << cousin->name() << "\n";
     }
 
@@ -101,7 +119,8 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) {
 }
 
 
-xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
+xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) 
+{
     xml_node<>* new_node = doc.allocate_node(node->type());
 
     
@@ -117,7 +136,8 @@ xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
     new_node->value(new_value, value_size - 1);
 
     
-    for (xml_attribute<>* src_attr = node->first_attribute(); src_attr; src_attr = src_attr->next_attribute()) {
+    for (xml_attribute<>* src_attr = node->first_attribute(); src_attr; src_attr = src_attr->next_attribute()) 
+    {
         const char* src_attr_name = src_attr->name();
         size_t attr_name_size = strlen(src_attr_name) + 1;
         char* new_attr_name = doc.allocate_string(src_attr_name, attr_name_size);
@@ -131,7 +151,8 @@ xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
     }
 
     
-    for (xml_node<>* src_child = node->first_node(); src_child; src_child = src_child->next_sibling()) {
+    for (xml_node<>* src_child = node->first_node(); src_child; src_child = src_child->next_sibling()) 
+    {
         xml_node<>* new_child = copy_node_to_heap(doc, src_child);
         new_node->append_node(new_child);
     }
@@ -140,7 +161,8 @@ xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
 }
 
 
-vector<xml_node<>*> get_cousins(string xml) {
+vector<xml_node<>*> get_cousins(string xml) 
+{
     vector<xml_node<>*> cousins;
     xml_document<> doc;
     doc.parse<0>((char*)xml.c_str());
@@ -153,8 +175,10 @@ vector<xml_node<>*> get_cousins(string xml) {
     auto [parent, banned_child] = get_parent_and_child_by_generation(node, nullptr, kinship_degree);
 
 
-    for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) {
-        if (banned_child != child) {
+    for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) 
+    {
+        if (banned_child != child) 
+        {
             get_children_at_generation(child, kinship_degree - 1, cousins);
         }
     }
