@@ -97,3 +97,42 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) {
 
     outfile.close();
 }
+
+
+xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
+    xml_node<>* new_node = doc.allocate_node(node->type());
+
+    
+    const char* src_name = node->name();
+    size_t name_size = strlen(src_name) + 1;
+    char* new_name = doc.allocate_string(src_name, name_size);
+    new_node->name(new_name, name_size - 1);
+
+    
+    const char* src_value = node->value();
+    size_t value_size = strlen(src_value) + 1;
+    char* new_value = doc.allocate_string(src_value, value_size);
+    new_node->value(new_value, value_size - 1);
+
+    
+    for (xml_attribute<>* src_attr = node->first_attribute(); src_attr; src_attr = src_attr->next_attribute()) {
+        const char* src_attr_name = src_attr->name();
+        size_t attr_name_size = strlen(src_attr_name) + 1;
+        char* new_attr_name = doc.allocate_string(src_attr_name, attr_name_size);
+
+        const char* src_attr_value = src_attr->value();
+        size_t attr_value_size = strlen(src_attr_value) + 1;
+        char* new_attr_value = doc.allocate_string(src_attr_value, attr_value_size);
+
+        xml_attribute<>* new_attr = doc.allocate_attribute(new_attr_name, new_attr_value);
+        new_node->append_attribute(new_attr);
+    }
+
+    
+    for (xml_node<>* src_child = node->first_node(); src_child; src_child = src_child->next_sibling()) {
+        xml_node<>* new_child = copy_node_to_heap(doc, src_child);
+        new_node->append_node(new_child);
+    }
+
+    return new_node;
+}

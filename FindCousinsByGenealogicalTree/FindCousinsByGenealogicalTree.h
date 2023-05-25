@@ -24,3 +24,6 @@ void get_children_at_generation(xml_node<>* parent, unsigned int generation, vec
 
 
 void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins);
+
+
+xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node);
