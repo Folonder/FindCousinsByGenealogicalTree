@@ -9,7 +9,7 @@ int main()
         char* input_file = (char*)"data.xml";
         string xml = read_xml_file(input_file);
 
-        vector<xml_node<>*> cousins = getCousins(xml);
+        vector<xml_node<>*> cousins = get_cousins(xml);
 
         write_cousins_in_file((char*)"output.txt", cousins);
     }
