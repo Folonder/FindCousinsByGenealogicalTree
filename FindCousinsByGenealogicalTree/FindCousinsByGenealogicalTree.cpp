@@ -33,3 +33,20 @@ string read_xml_file(char* file_name) {
     file<> xml_file(file_name);
     return xml_file.data();
 }
+
+
+xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_name) {
+    xml_attribute<>* attr = node->first_attribute(attribute_name.c_str());
+    if (attr) {
+        return node;
+    }
+
+    for (xml_node<>* child_node = node->first_node(); child_node; child_node = child_node->next_sibling()) {
+        xml_node<>* node = find_node_with_attribute(child_node, attribute_name);
+        if (node) {
+            return node;
+        }
+    }
+
+    return NULL;
+}
