@@ -50,3 +50,16 @@ xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_n
 
     return NULL;
 }
+
+
+unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name) {
+    if (node->first_attribute(attribute_name.c_str())->value()) {
+        try {
+            return stoul(node->first_attribute(attribute_name.c_str())->value());
+        }
+        catch (runtime_error ex) {
+            throw KinshipDegreeException("Степень родства не является натуральным числом");
+        }
+    }
+    throw KinshipDegreeException("Степень родства не указана");
+}
