@@ -27,3 +27,6 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins);
 
 
 xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node);
+
+
+vector<xml_node<>*> get_cousins(string xml);

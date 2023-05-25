@@ -7,9 +7,11 @@ int main()
     try
     {
         char* input_file = (char*)"data.xml";
-        xml_document<> doc;
         string xml = read_xml_file(input_file);
-        doc.parse<0>((char*)xml.c_str());
+
+        vector<xml_node<>*> cousins = getCousins(xml);
+
+        write_cousins_in_file((char*)"output.txt", cousins);
     }
     catch (FileNotFoundException ex)
     {
@@ -135,4 +137,31 @@ xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) {
     }
 
     return new_node;
+}
+
+
+vector<xml_node<>*> get_cousins(string xml) {
+    vector<xml_node<>*> cousins;
+    xml_document<> doc;
+    doc.parse<0>((char*)xml.c_str());
+    xml_node<>* root = doc.first_node();
+
+    xml_node<>* node = find_node_with_attribute(root, "kinship_degree");
+
+    unsigned int kinship_degree = validate_node_attribute(node, "kinship_degree");
+
+    auto [parent, banned_child] = get_parent_and_child_by_generation(node, nullptr, kinship_degree);
+
+
+    for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) {
+        if (banned_child != child) {
+            get_children_at_generation(child, kinship_degree - 1, cousins);
+        }
+    }
+
+    for (int i = 0; i < cousins.size(); i++)
+    {
+        cousins[i] = copy_node_to_heap(doc, cousins[i]);
+    }
+    return cousins;
 }
