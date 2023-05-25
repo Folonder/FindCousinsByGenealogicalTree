@@ -83,3 +83,17 @@ void get_children_at_generation(xml_node<>* parent, unsigned int generation, vec
         cousins.push_back(parent);
     }
 }
+
+
+void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) {
+    std::ofstream outfile(file_name);
+
+    if (!outfile.is_open()) {
+        throw runtime_error(file_name);
+    }
+    for (xml_node<>* cousin : cousins) {
+        outfile << cousin->name() << "\n";
+    }
+
+    outfile.close();
+}

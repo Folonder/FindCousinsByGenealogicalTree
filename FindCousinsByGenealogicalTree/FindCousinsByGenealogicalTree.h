@@ -21,3 +21,6 @@ tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* p
 
 
 void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins);
+
+
+void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins);
