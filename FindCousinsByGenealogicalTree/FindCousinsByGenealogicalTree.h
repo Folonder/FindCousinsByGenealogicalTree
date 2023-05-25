@@ -15,3 +15,6 @@ xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_n
 
 
 unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name);
+
+
+tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation);

@@ -63,3 +63,11 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
     }
     throw KinshipDegreeException("Степень родства не указана");
 }
+
+
+tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation) {
+    if (generation > 0) {
+        return get_parent_and_child_by_generation(parent->parent(), parent, generation - 1);
+    }
+    return { parent, child };
+}
