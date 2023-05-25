@@ -18,3 +18,6 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
 
 
 tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation);
+
+
+void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins);

@@ -71,3 +71,15 @@ tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* p
     }
     return { parent, child };
 }
+
+
+void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins) {
+    if (generation > 0) {
+        for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) {
+            get_children_at_generation(child, generation - 1, cousins);
+        }
+    }
+    else {
+        cousins.push_back(parent);
+    }
+}
