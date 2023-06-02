@@ -1,0 +1,6 @@
+<map id="get_parent_and_child_by_generation" name="get_parent_and_child_by_generation">
+<area shape="rect" id="Node000001" title="По звену найти его предка на generation поколений выше, а также его потомка, от которого к этому звен..." alt="" coords="145,29,289,72"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="244,17,234,10,217,8,202,10,192,14,189,20,190,28,185,29,183,19,189,11,200,5,217,3,236,5,247,12"/>
+<area shape="rect" id="Node000002" href="$_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,37,97,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,53,97,53,97,48,130,48"/>
+</map>

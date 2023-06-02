@@ -1,0 +1,6 @@
+<map id="get_children_at_generation" name="get_children_at_generation">
+<area shape="rect" id="Node000001" title="Получить всех потомков звена на generation поколений ниже" alt="" coords="145,29,321,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="264,17,254,11,233,8,214,10,204,15,201,20,206,28,202,30,196,21,200,11,213,5,233,3,256,6,267,13"/>
+<area shape="rect" id="Node000002" href="$_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,29,97,56"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="129,45,97,45,97,40,129,40"/>
+</map>

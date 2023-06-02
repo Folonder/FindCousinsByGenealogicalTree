@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>FindCousinsByGenealogicalTree: Файл C:/учеба/4 семестр/кинпо/FindCousinsByGenealogicalTree/FindCousinsByGenealogicalTree/FindCousinsByGenealogicalTree.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">FindCousinsByGenealogicalTree
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d6de8653d1bbf63eb2c6835f87fb2d5.html">FindCousinsByGenealogicalTree</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle"><div class="title">Файл FindCousinsByGenealogicalTree.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Основные функции программы  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;../rapidxml/rapidxml.hpp&quot;</code><br />
+<code>#include &quot;../rapidxml/rapidxml_utils.hpp&quot;</code><br />
+<code>#include &quot;Exceptions/FileNotFoundException.h&quot;</code><br />
+<code>#include &quot;Exceptions/KinshipDegreeException.h&quot;</code><br />
+</div>
+<p><a href="_find_cousins_by_genealogical_tree_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:ad4790da5da5bce10a53fc1d179d282b3"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#ad4790da5da5bce10a53fc1d179d282b3">read_xml_file</a> (char *file_name)</td></tr>
+<tr class="memdesc:ad4790da5da5bce10a53fc1d179d282b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считывает xml файл в виде строки  <br /></td></tr>
+<tr class="separator:ad4790da5da5bce10a53fc1d179d282b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adee643912e977b3e5942f227fc287180"><td class="memItemLeft" align="right" valign="top">xml_node *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#adee643912e977b3e5942f227fc287180">find_node_with_attribute</a> (xml_node&lt;&gt; *node, const string &amp;attribute_name)</td></tr>
+<tr class="memdesc:adee643912e977b3e5942f227fc287180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Находит звено с заданным атрибутом  <br /></td></tr>
+<tr class="separator:adee643912e977b3e5942f227fc287180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40e8dba13cc89e59b7fd521cb079a46"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#af40e8dba13cc89e59b7fd521cb079a46">validate_node_attribute</a> (xml_node&lt;&gt; *node, const string attribute_name)</td></tr>
+<tr class="memdesc:af40e8dba13cc89e59b7fd521cb079a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Валидация значение атрибута на натуральное число  <br /></td></tr>
+<tr class="separator:af40e8dba13cc89e59b7fd521cb079a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8928e69698fdd7d17fddf8db53115a69"><td class="memItemLeft" align="right" valign="top">tuple&lt; xml_node&lt;&gt; *, xml_node&lt;&gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#a8928e69698fdd7d17fddf8db53115a69">get_parent_and_child_by_generation</a> (xml_node&lt;&gt; *parent, xml_node&lt;&gt; *child, unsigned int generation)</td></tr>
+<tr class="memdesc:a8928e69698fdd7d17fddf8db53115a69"><td class="mdescLeft">&#160;</td><td class="mdescRight">По звену найти его предка на <code>generation</code> поколений выше, а также его потомка, от которого к этому звену пришли  <br /></td></tr>
+<tr class="separator:a8928e69698fdd7d17fddf8db53115a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a643ddb8f1150a08f493d088f622b7856"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#a643ddb8f1150a08f493d088f622b7856">get_children_at_generation</a> (xml_node&lt;&gt; *parent, unsigned int generation, vector&lt; xml_node&lt;&gt; * &gt; &amp;children)</td></tr>
+<tr class="memdesc:a643ddb8f1150a08f493d088f622b7856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получить всех потомков звена на <code>generation</code> поколений ниже  <br /></td></tr>
+<tr class="separator:a643ddb8f1150a08f493d088f622b7856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee15e01e6c81b594ac5f39a761fe6f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#abee15e01e6c81b594ac5f39a761fe6f1">write_cousins_in_file</a> (char *file_name, vector&lt; xml_node&lt;&gt; * &gt; cousins)</td></tr>
+<tr class="memdesc:abee15e01e6c81b594ac5f39a761fe6f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записать список кузенов в выходной файл  <br /></td></tr>
+<tr class="separator:abee15e01e6c81b594ac5f39a761fe6f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fea185399f38954325789aeaf1b3afd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_find_cousins_by_genealogical_tree_8h.html#a9fea185399f38954325789aeaf1b3afd">get_cousins</a> (xml_document&lt;&gt; *doc, vector&lt; xml_node&lt;&gt; * &gt; *cousins)</td></tr>
+<tr class="memdesc:a9fea185399f38954325789aeaf1b3afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Найти кузенов человека по генеалогическому дереву  <br /></td></tr>
+<tr class="separator:a9fea185399f38954325789aeaf1b3afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Основные функции программы </p>
+<p>Данный файл содержит функции работы программы для нахождение X-юродных кузенов человека по генеалогическому дереву </p>
+</div><h2 class="groupheader">Функции</h2>
+<a id="adee643912e977b3e5942f227fc287180" name="adee643912e977b3e5942f227fc287180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee643912e977b3e5942f227fc287180">&#9670;&#160;</a></span>find_node_with_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xml_node * find_node_with_attribute </td>
+          <td>(</td>
+          <td class="paramtype">xml_node&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>attribute_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Находит звено с заданным атрибутом </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>- звено, от которого начать поиск </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_name</td><td>- имя атрибута </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>звено, содержащее заданный атрибут </dd></dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_cgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_cgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_cgraph" id="a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_cgraph">
+<area shape="rect" title="Находит звено с заданным атрибутом" alt="" coords="5,29,166,56"/>
+<area shape="poly" title=" " alt="" coords="58,30,53,21,56,11,67,5,86,3,106,6,116,13,113,17,104,11,85,8,69,10,60,15,58,20,62,28"/>
+</map>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_icgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_icgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_icgraph" id="a_find_cousins_by_genealogical_tree_8h_adee643912e977b3e5942f227fc287180_icgraph">
+<area shape="rect" title="Находит звено с заданным атрибутом" alt="" coords="145,29,305,56"/>
+<area shape="poly" title=" " alt="" coords="255,17,245,11,225,8,207,10,197,15,195,20,200,28,195,30,190,21,193,11,205,5,225,3,247,6,258,13"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,29,97,56"/>
+<area shape="poly" title=" " alt="" coords="130,45,97,45,97,40,130,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a643ddb8f1150a08f493d088f622b7856" name="a643ddb8f1150a08f493d088f622b7856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a643ddb8f1150a08f493d088f622b7856">&#9670;&#160;</a></span>get_children_at_generation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_children_at_generation </td>
+          <td>(</td>
+          <td class="paramtype">xml_node&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>generation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; xml_node&lt;&gt; * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>children</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получить всех потомков звена на <code>generation</code> поколений ниже </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parent</td><td>- предок, чьих потомков нужно найти </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">generation</td><td>- на сколько поколений ниже должны быть дети </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">children</td><td>- список детей </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_cgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_cgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_cgraph" id="a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_cgraph">
+<area shape="rect" title="Получить всех потомков звена на generation поколений ниже" alt="" coords="5,29,182,56"/>
+<area shape="poly" title=" " alt="" coords="63,30,58,21,62,11,74,5,94,3,116,6,127,13,124,17,114,11,93,8,75,10,65,15,63,20,68,28"/>
+</map>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_icgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_icgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_icgraph" id="a_find_cousins_by_genealogical_tree_8h_a643ddb8f1150a08f493d088f622b7856_icgraph">
+<area shape="rect" title="Получить всех потомков звена на generation поколений ниже" alt="" coords="145,29,321,56"/>
+<area shape="poly" title=" " alt="" coords="264,17,254,11,233,8,214,10,204,15,201,20,206,28,202,30,196,21,200,11,213,5,233,3,256,6,267,13"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,29,97,56"/>
+<area shape="poly" title=" " alt="" coords="129,45,97,45,97,40,129,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9fea185399f38954325789aeaf1b3afd" name="a9fea185399f38954325789aeaf1b3afd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fea185399f38954325789aeaf1b3afd">&#9670;&#160;</a></span>get_cousins()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_cousins </td>
+          <td>(</td>
+          <td class="paramtype">xml_document&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>doc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; xml_node&lt;&gt; * &gt; *&#160;</td>
+          <td class="paramname"><em>cousins</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Найти кузенов человека по генеалогическому дереву </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">doc</td><td>- генеалогическое дерево </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">cousins</td><td>- список кузенов человека </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_a9fea185399f38954325789aeaf1b3afd_cgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_a9fea185399f38954325789aeaf1b3afd_cgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_a9fea185399f38954325789aeaf1b3afd_cgraph" id="a_find_cousins_by_genealogical_tree_8h_a9fea185399f38954325789aeaf1b3afd_cgraph">
+<area shape="rect" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,145,97,172"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#adee643912e977b3e5942f227fc287180" title="Находит звено с заданным атрибутом" alt="" coords="153,29,313,56"/>
+<area shape="poly" title=" " alt="" coords="61,143,95,105,118,84,143,66,155,60,158,64,146,70,121,88,98,109,65,147"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a643ddb8f1150a08f493d088f622b7856" title="Получить всех потомков звена на generation поколений ниже" alt="" coords="145,104,321,131"/>
+<area shape="poly" title=" " alt="" coords="96,146,157,132,158,137,98,151"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a8928e69698fdd7d17fddf8db53115a69" title="По звену найти его предка на generation поколений выше, а также его потомка, от которого к этому звен..." alt="" coords="161,179,305,221"/>
+<area shape="poly" title=" " alt="" coords="98,166,147,178,145,183,96,172"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#af40e8dba13cc89e59b7fd521cb079a46" title="Валидация значение атрибута на натуральное число" alt="" coords="156,245,310,272"/>
+<area shape="poly" title=" " alt="" coords="67,170,101,201,146,231,159,237,157,242,143,236,98,205,64,174"/>
+<area shape="poly" title=" " alt="" coords="202,30,196,21,200,11,213,5,233,3,256,6,267,13,264,17,254,11,233,8,214,10,204,15,201,20,206,28"/>
+<area shape="poly" title=" " alt="" coords="202,105,196,95,200,86,213,79,233,77,256,80,267,87,264,92,254,85,233,83,214,85,204,89,201,95,206,102"/>
+<area shape="poly" title=" " alt="" coords="198,178,196,169,202,160,215,154,233,152,253,155,265,162,263,166,252,160,233,157,216,159,206,164,202,170,203,178"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8928e69698fdd7d17fddf8db53115a69" name="a8928e69698fdd7d17fddf8db53115a69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8928e69698fdd7d17fddf8db53115a69">&#9670;&#160;</a></span>get_parent_and_child_by_generation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple&lt; xml_node&lt;&gt; *, xml_node&lt;&gt; * &gt; get_parent_and_child_by_generation </td>
+          <td>(</td>
+          <td class="paramtype">xml_node&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">xml_node&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>child</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>generation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>По звену найти его предка на <code>generation</code> поколений выше, а также его потомка, от которого к этому звену пришли </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parent</td><td>- звено, чьего предка нужно найти </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">child</td><td>- потомок, от которого к этому предку пришли </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">generation</td><td>- на сколько поколений выше нужно найти предка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>потомок и предок </dd></dl>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_cgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_cgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_cgraph" id="a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_cgraph">
+<area shape="rect" title="По звену найти его предка на generation поколений выше, а также его потомка, от которого к этому звен..." alt="" coords="5,29,150,72"/>
+<area shape="poly" title=" " alt="" coords="49,29,48,19,53,11,63,5,78,3,94,5,103,12,100,16,92,10,77,8,64,10,56,14,53,20,54,28"/>
+</map>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_icgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_icgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_icgraph" id="a_find_cousins_by_genealogical_tree_8h_a8928e69698fdd7d17fddf8db53115a69_icgraph">
+<area shape="rect" title="По звену найти его предка на generation поколений выше, а также его потомка, от которого к этому звен..." alt="" coords="145,29,289,72"/>
+<area shape="poly" title=" " alt="" coords="244,17,234,10,217,8,202,10,192,14,189,20,190,28,185,29,183,19,189,11,200,5,217,3,236,5,247,12"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,37,97,64"/>
+<area shape="poly" title=" " alt="" coords="130,53,97,53,97,48,130,48"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad4790da5da5bce10a53fc1d179d282b3" name="ad4790da5da5bce10a53fc1d179d282b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4790da5da5bce10a53fc1d179d282b3">&#9670;&#160;</a></span>read_xml_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string read_xml_file </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считывает xml файл в виде строки </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_name</td><td>- путь к файлу </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>содержание файла </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">FileNotFoundException</td><td>- файл отсутствует по заданному пути </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af40e8dba13cc89e59b7fd521cb079a46" name="af40e8dba13cc89e59b7fd521cb079a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40e8dba13cc89e59b7fd521cb079a46">&#9670;&#160;</a></span>validate_node_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int validate_node_attribute </td>
+          <td>(</td>
+          <td class="paramtype">xml_node&lt;&gt; *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>attribute_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Валидация значение атрибута на натуральное число </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>- звено для валидации </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attribute_name</td><td>- атрибут для валидации </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>значение атрибута </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">KinshipDegreeException</td><td>- атрибут не был найден или его значение не натуральное число </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="_find_cousins_by_genealogical_tree_8h_af40e8dba13cc89e59b7fd521cb079a46_icgraph.png" border="0" usemap="#a_find_cousins_by_genealogical_tree_8h_af40e8dba13cc89e59b7fd521cb079a46_icgraph" alt=""/></div>
+<map name="a_find_cousins_by_genealogical_tree_8h_af40e8dba13cc89e59b7fd521cb079a46_icgraph" id="a_find_cousins_by_genealogical_tree_8h_af40e8dba13cc89e59b7fd521cb079a46_icgraph">
+<area shape="rect" title="Валидация значение атрибута на натуральное число" alt="" coords="145,5,298,32"/>
+<area shape="rect" href="_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,5,97,32"/>
+<area shape="poly" title=" " alt="" coords="130,21,97,21,97,16,130,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abee15e01e6c81b594ac5f39a761fe6f1" name="abee15e01e6c81b594ac5f39a761fe6f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abee15e01e6c81b594ac5f39a761fe6f1">&#9670;&#160;</a></span>write_cousins_in_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_cousins_in_file </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>file_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; xml_node&lt;&gt; * &gt;&#160;</td>
+          <td class="paramname"><em>cousins</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записать список кузенов в выходной файл </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file_name</td><td>- путь к файлу для записи </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cousins</td><td>- список кузенов </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>

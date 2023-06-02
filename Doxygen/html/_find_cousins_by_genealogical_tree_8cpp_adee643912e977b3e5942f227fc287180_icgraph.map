@@ -1,0 +1,6 @@
+<map id="find_node_with_attribute" name="find_node_with_attribute">
+<area shape="rect" id="Node000001" title="Находит звено с заданным атрибутом" alt="" coords="145,29,305,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="255,17,245,11,225,8,207,10,197,15,195,20,200,28,195,30,190,21,193,11,205,5,225,3,247,6,258,13"/>
+<area shape="rect" id="Node000002" href="$_find_cousins_by_genealogical_tree_8cpp.html#a9fea185399f38954325789aeaf1b3afd" title="Найти кузенов человека по генеалогическому дереву" alt="" coords="5,29,97,56"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="130,45,97,45,97,40,130,40"/>
+</map>

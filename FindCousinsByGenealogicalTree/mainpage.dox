@@ -1,0 +1,38 @@
+/*!
+ * \mainpage Программа для вычисления маршрута с наименьшими денежными затратами
+ * \author Ролдугин Олег
+ * \details
+ * Программа находит X-юродных братьев и сестер человека по генеалогическому дереву.
+ * <h2><b> Формат входных данных</b></h3>
+ * На вход программы подается файд формата .xml, описывающий генеалогическое дерево.
+ * <h2><b> Cодержание выходного файла </b></h2>
+ * Выходной файл представляется в виде одного текстового файла, содержащего список имен братьев и сестер.
+ * <h2><b> Примеры работы программы </b></h2>
+ <center>
+ <table>
+ <tr>
+ <th>Геналогическое дерево</th>
+ <th>Результат вычисления</th>
+ </tr>
+ <tr>
+ <td>
+ <tt><John></tt><br>
+ <tt>&nbsp;&nbsp;<Richard></tt><br>
+ <tt>&nbsp;&nbsp;&nbsp;&nbsp;<Any/></tt><br>
+ <tt>&nbsp;&nbsp;&nbsp;&nbsp;<Sally kinship_degree="2"/></tt><br>
+ <tt>&nbsp;&nbsp;</Richard></tt><br>
+ <tt>&nbsp;&nbsp;<Michael></tt><br>
+ <tt>&nbsp;&nbsp;&nbsp;&nbsp;<Molly/></tt><br>
+ <tt>&nbsp;&nbsp;&nbsp;&nbsp;<William/></tt><br>
+ <tt>&nbsp;&nbsp;</Michael></tt><br>
+ <tt></John></tt><br>
+ </td>
+ <td>
+ <center>
+ <tt>Molly</tt><br>
+ <tt>William</tt><br>
+ </center>
+ </td>
+ </table>
+ </center>
+*/

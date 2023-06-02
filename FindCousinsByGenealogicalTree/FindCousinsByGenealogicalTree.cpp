@@ -1,15 +1,27 @@
-﻿#include <iostream>
+﻿/*!
+ * \file
+ * \brief Данный файл содержит реализацию функций программы для нахождения кузенов человека по генеалогичесому дереву
+*/
+
+
+#include <iostream>
 #include "FindCousinsByGenealogicalTree.h"
 
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     try
     {
-        char* input_file = (char*)"data.xml";
+        char* input_file = (char*)"big2.xml";
         string xml = read_xml_file(input_file);
 
-        vector<xml_node<>*> cousins = get_cousins(xml);
+        vector<xml_node<>*> cousins;
+
+        xml_document<> doc;
+        doc.parse<0>((char*)xml.c_str());
+
+        get_cousins(&doc, &cousins);
 
         write_cousins_in_file((char*)"output.txt", cousins);
     }
@@ -62,22 +74,31 @@ xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_n
 
 unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name) 
 {
-    if (node->first_attribute(attribute_name.c_str())->value()) {
-        try 
-        {
-            return stoul(node->first_attribute(attribute_name.c_str())->value());
-        }
-        catch (runtime_error ex) 
-        {
+    if (node == NULL || !node->first_attribute(attribute_name.c_str()))
+    {
+        throw KinshipDegreeException("Степень родства не указана");
+    }
+    try
+    {
+        unsigned int value = stoul(node->first_attribute(attribute_name.c_str())->value());
+        if (value == 0) {
             throw KinshipDegreeException("Степень родства не является натуральным числом");
         }
+        return value;
     }
-    throw KinshipDegreeException("Степень родства не указана");
+    catch (exception ex) 
+    {
+        throw KinshipDegreeException("Степень родства не является натуральным числом");
+    }
 }
 
 
 tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation) 
 {
+    if (parent == NULL)
+    {
+        throw runtime_error("Поколение больше глубины дерева");
+    }
     if (generation > 0) 
     {
         return get_parent_and_child_by_generation(parent->parent(), parent, generation - 1);
@@ -86,18 +107,18 @@ tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* p
 }
 
 
-void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& cousins) 
+void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& children) 
 {
     if (generation > 0) 
     {
         for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) 
         {
-            get_children_at_generation(child, generation - 1, cousins);
+            get_children_at_generation(child, generation - 1, children);
         }
     }
     else 
     {
-        cousins.push_back(parent);
+        children.push_back(parent);
     }
 }
 
@@ -119,54 +140,10 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins)
 }
 
 
-xml_node<>* copy_node_to_heap(xml_document<>& doc, xml_node<>* node) 
+void get_cousins(xml_document<> *doc, vector<xml_node<>*> *cousins)
 {
-    xml_node<>* new_node = doc.allocate_node(node->type());
-
     
-    const char* src_name = node->name();
-    size_t name_size = strlen(src_name) + 1;
-    char* new_name = doc.allocate_string(src_name, name_size);
-    new_node->name(new_name, name_size - 1);
-
-    
-    const char* src_value = node->value();
-    size_t value_size = strlen(src_value) + 1;
-    char* new_value = doc.allocate_string(src_value, value_size);
-    new_node->value(new_value, value_size - 1);
-
-    
-    for (xml_attribute<>* src_attr = node->first_attribute(); src_attr; src_attr = src_attr->next_attribute()) 
-    {
-        const char* src_attr_name = src_attr->name();
-        size_t attr_name_size = strlen(src_attr_name) + 1;
-        char* new_attr_name = doc.allocate_string(src_attr_name, attr_name_size);
-
-        const char* src_attr_value = src_attr->value();
-        size_t attr_value_size = strlen(src_attr_value) + 1;
-        char* new_attr_value = doc.allocate_string(src_attr_value, attr_value_size);
-
-        xml_attribute<>* new_attr = doc.allocate_attribute(new_attr_name, new_attr_value);
-        new_node->append_attribute(new_attr);
-    }
-
-    
-    for (xml_node<>* src_child = node->first_node(); src_child; src_child = src_child->next_sibling()) 
-    {
-        xml_node<>* new_child = copy_node_to_heap(doc, src_child);
-        new_node->append_node(new_child);
-    }
-
-    return new_node;
-}
-
-
-vector<xml_node<>*> get_cousins(string xml) 
-{
-    vector<xml_node<>*> cousins;
-    xml_document<> doc;
-    doc.parse<0>((char*)xml.c_str());
-    xml_node<>* root = doc.first_node();
+    xml_node<>* root = doc->first_node();
 
     xml_node<>* node = find_node_with_attribute(root, "kinship_degree");
 
@@ -179,13 +156,7 @@ vector<xml_node<>*> get_cousins(string xml)
     {
         if (banned_child != child) 
         {
-            get_children_at_generation(child, kinship_degree - 1, cousins);
+            get_children_at_generation(child, kinship_degree - 1, *cousins);
         }
     }
-
-    for (int i = 0; i < cousins.size(); i++)
-    {
-        cousins[i] = copy_node_to_heap(doc, cousins[i]);
-    }
-    return cousins;
 }

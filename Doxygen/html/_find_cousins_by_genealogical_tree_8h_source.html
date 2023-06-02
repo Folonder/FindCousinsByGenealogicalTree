@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>FindCousinsByGenealogicalTree: Исходный файл C:/учеба/4 семестр/кинпо/FindCousinsByGenealogicalTree/FindCousinsByGenealogicalTree/FindCousinsByGenealogicalTree.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">FindCousinsByGenealogicalTree
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.7 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_2d6de8653d1bbf63eb2c6835f87fb2d5.html">FindCousinsByGenealogicalTree</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">FindCousinsByGenealogicalTree.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_find_cousins_by_genealogical_tree_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../rapidxml/rapidxml.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../rapidxml/rapidxml_utils.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Exceptions/FileNotFoundException.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Exceptions/KinshipDegreeException.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">using namespace </span>rapidxml;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">string</span> <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#ad4790da5da5bce10a53fc1d179d282b3">read_xml_file</a>(<span class="keywordtype">char</span>* file_name);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>xml_node&lt;&gt;* <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#adee643912e977b3e5942f227fc287180">find_node_with_attribute</a>(xml_node&lt;&gt;* node, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; attribute_name);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#af40e8dba13cc89e59b7fd521cb079a46">validate_node_attribute</a>(xml_node&lt;&gt;* node, <span class="keyword">const</span> <span class="keywordtype">string</span> attribute_name);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>tuple&lt;xml_node&lt;&gt;*, xml_node&lt;&gt;*&gt; <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#a8928e69698fdd7d17fddf8db53115a69">get_parent_and_child_by_generation</a>(xml_node&lt;&gt;* parent, xml_node&lt;&gt;* child, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> generation);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">void</span> <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#a643ddb8f1150a08f493d088f622b7856">get_children_at_generation</a>(xml_node&lt;&gt;* parent, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> generation, vector&lt;xml_node&lt;&gt;*&gt;&amp; children);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#abee15e01e6c81b594ac5f39a761fe6f1">write_cousins_in_file</a>(<span class="keywordtype">char</span>* file_name, vector&lt;xml_node&lt;&gt;*&gt; cousins);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">void</span> <a class="code hl_function" href="_find_cousins_by_genealogical_tree_8h.html#a9fea185399f38954325789aeaf1b3afd">get_cousins</a>(xml_document&lt;&gt; *doc, vector&lt;xml_node&lt;&gt;*&gt;* cousins);</div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_a643ddb8f1150a08f493d088f622b7856"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#a643ddb8f1150a08f493d088f622b7856">get_children_at_generation</a></div><div class="ttdeci">void get_children_at_generation(xml_node&lt;&gt; *parent, unsigned int generation, vector&lt; xml_node&lt;&gt; * &gt; &amp;children)</div><div class="ttdoc">Получить всех потомков звена на generation поколений ниже</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:110</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_a8928e69698fdd7d17fddf8db53115a69"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#a8928e69698fdd7d17fddf8db53115a69">get_parent_and_child_by_generation</a></div><div class="ttdeci">tuple&lt; xml_node&lt;&gt; *, xml_node&lt;&gt; * &gt; get_parent_and_child_by_generation(xml_node&lt;&gt; *parent, xml_node&lt;&gt; *child, unsigned int generation)</div><div class="ttdoc">По звену найти его предка на generation поколений выше, а также его потомка, от которого к этому звен...</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:96</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_a9fea185399f38954325789aeaf1b3afd"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#a9fea185399f38954325789aeaf1b3afd">get_cousins</a></div><div class="ttdeci">void get_cousins(xml_document&lt;&gt; *doc, vector&lt; xml_node&lt;&gt; * &gt; *cousins)</div><div class="ttdoc">Найти кузенов человека по генеалогическому дереву</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:143</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_abee15e01e6c81b594ac5f39a761fe6f1"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#abee15e01e6c81b594ac5f39a761fe6f1">write_cousins_in_file</a></div><div class="ttdeci">void write_cousins_in_file(char *file_name, vector&lt; xml_node&lt;&gt; * &gt; cousins)</div><div class="ttdoc">Записать список кузенов в выходной файл</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:126</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_ad4790da5da5bce10a53fc1d179d282b3"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#ad4790da5da5bce10a53fc1d179d282b3">read_xml_file</a></div><div class="ttdeci">string read_xml_file(char *file_name)</div><div class="ttdoc">Считывает xml файл в виде строки</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:43</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_adee643912e977b3e5942f227fc287180"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#adee643912e977b3e5942f227fc287180">find_node_with_attribute</a></div><div class="ttdeci">xml_node * find_node_with_attribute(xml_node&lt;&gt; *node, const string &amp;attribute_name)</div><div class="ttdoc">Находит звено с заданным атрибутом</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:54</div></div>
+<div class="ttc" id="a_find_cousins_by_genealogical_tree_8h_html_af40e8dba13cc89e59b7fd521cb079a46"><div class="ttname"><a href="_find_cousins_by_genealogical_tree_8h.html#af40e8dba13cc89e59b7fd521cb079a46">validate_node_attribute</a></div><div class="ttdeci">unsigned int validate_node_attribute(xml_node&lt;&gt; *node, const string attribute_name)</div><div class="ttdoc">Валидация значение атрибута на натуральное число</div><div class="ttdef"><b>Definition</b> FindCousinsByGenealogicalTree.cpp:75</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
+</small></address>
+</body>
+</html>
