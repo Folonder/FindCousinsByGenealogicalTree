@@ -13,7 +13,7 @@ int main()
     setlocale(LC_ALL, "Russian");
     try
     {
-        char* input_file = (char*)"big2.xml";
+        char* input_file = (char*)"data.xml";
         string xml = read_xml_file(input_file);
 
         vector<xml_node<>*> cousins;
@@ -36,6 +36,10 @@ int main()
     catch (runtime_error ex)
     {
         cout << ex.what();
+    }
+    catch (parse_error ex)
+    {
+        cout << "Ошибка синтаксиса";
     }
 }
 
@@ -82,13 +86,13 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
     {
         unsigned int value = stoul(node->first_attribute(attribute_name.c_str())->value());
         if (value == 0) {
-            throw KinshipDegreeException("Степень родства не является натуральным числом");
+            throw KinshipDegreeException("Степень родства не является натуральным числом или находится вне разрешенного диапазона");
         }
         return value;
     }
     catch (exception ex) 
     {
-        throw KinshipDegreeException("Степень родства не является натуральным числом");
+        throw KinshipDegreeException("Степень родства не является натуральным числом или находится вне разрешенного диапазона");
     }
 }
 
@@ -97,7 +101,7 @@ tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* p
 {
     if (parent == NULL)
     {
-        throw runtime_error("Поколение больше глубины дерева");
+        throw KinshipDegreeException("Степень родства больше глубины дерева");
     }
     if (generation > 0) 
     {
@@ -129,7 +133,7 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins)
 
     if (!outfile.is_open()) 
     {
-        throw runtime_error(file_name);
+        throw runtime_error("Невозможно создать или открыть файл: " + string(file_name));
     }
     for (xml_node<>* cousin : cousins) 
     {

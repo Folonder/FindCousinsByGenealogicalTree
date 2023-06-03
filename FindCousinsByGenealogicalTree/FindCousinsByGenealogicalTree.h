@@ -50,6 +50,7 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
  * \param[in] child - потомок, от которого к этому предку пришли
  * \param[in] generation - на сколько поколений выше нужно найти предка
  * \return потомок и предок
+ * \throw KinshipDegreeException - степень родства больше глубины дерева
 */
 tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation);
 
@@ -75,5 +76,6 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins);
 * \brief Найти кузенов человека по генеалогическому дереву
 * \param[in] doc - генеалогическое дерево
 * \param[out] cousins - список кузенов человека
+* \throw KinshipDegreeException - ошибка степени родства
 */
 void get_cousins(xml_document<> *doc, vector<xml_node<>*>* cousins);

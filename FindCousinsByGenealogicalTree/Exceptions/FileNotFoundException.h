@@ -33,7 +33,7 @@ public:
      * \return сообщение
     */
     string what() {
-        return "File not found: " + file_name;
+        return "Файл не найден:" + file_name;
     }
 
 };
