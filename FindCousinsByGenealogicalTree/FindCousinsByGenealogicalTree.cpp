@@ -8,21 +8,65 @@
 #include "FindCousinsByGenealogicalTree.h"
 
 
-int main()
+#ifdef _MSC_VER
+int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Russian");
-    try
-    {
-        char* input_file = (char*)"data.xml";
-        string xml = read_xml_file(input_file);
 
-        vector<xml_node<>*> cousins;
+    try {
+        if (argc != 3) {
+            throw runtime_error("Неверное количество аргументов");
+        }
+        //Прочитать файл
+        char* input_file = (char*)argv[1];
+        string xml = read_xml_file(input_file);
 
         xml_document<> doc;
         doc.parse<0>((char*)xml.c_str());
 
+        vector<xml_node<>*> cousins;
+
+        //Найти кузенов
         get_cousins(&doc, &cousins);
 
+        //Вывести в файл
+        write_cousins_in_file((char*)argv[2], cousins);
+    }
+    catch (FileNotFoundException ex) {
+        cout << ex.what();
+    }
+    catch (KinshipDegreeException ex) {
+        cout << ex.what();
+    }
+    catch (runtime_error ex) {
+        cout << ex.what();
+    }
+	catch (parse_error ex)
+    {
+        cout << "Ошибка синтаксиса";
+    }
+	
+    return 0;
+}
+
+#else
+int main() {
+    setlocale(LC_ALL, "Russian");
+    try
+    {
+        //Прочитать файл
+        char* input_file = (char*)"big.xml";
+        string xml = read_xml_file(input_file);
+
+        xml_document<> doc;
+        doc.parse<0>((char*)xml.c_str());
+
+        vector<xml_node<>*> cousins;
+
+        //Найти кузенов
+        get_cousins(&doc, &cousins);
+
+        //Вывести в файл
         write_cousins_in_file((char*)"output.txt", cousins);
     }
     catch (FileNotFoundException ex)
@@ -42,10 +86,12 @@ int main()
         cout << "Ошибка синтаксиса";
     }
 }
+#endif
 
 
 string read_xml_file(char* file_name) 
 {
+    //Если файл не был открыт
     if (!std::ifstream(file_name)) 
     {
         throw FileNotFoundException(file_name);
@@ -57,12 +103,13 @@ string read_xml_file(char* file_name)
 
 xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_name) 
 {
+    //Если есть атрибут
     xml_attribute<>* attr = node->first_attribute(attribute_name.c_str());
     if (attr) 
     {
         return node;
     }
-
+    //Для всех детей текущего звена повторить алгоритм
     for (xml_node<>* child_node = node->first_node(); child_node; child_node = child_node->next_sibling()) 
     {
         xml_node<>* node = find_node_with_attribute(child_node, attribute_name);
@@ -78,12 +125,14 @@ xml_node<>* find_node_with_attribute(xml_node<>* node, const string& attribute_n
 
 unsigned int validate_node_attribute(xml_node<>* node, const string attribute_name) 
 {
+    //Если звена нет или нет атрибута
     if (node == NULL || !node->first_attribute(attribute_name.c_str()))
     {
         throw KinshipDegreeException("Степень родства не указана");
     }
     try
     {
+        //Получить значение степени родства
         unsigned int value = stoul(node->first_attribute(attribute_name.c_str())->value());
         if (value == 0) {
             throw KinshipDegreeException("Степень родства не является натуральным числом или находится вне разрешенного диапазона");
@@ -99,6 +148,7 @@ unsigned int validate_node_attribute(xml_node<>* node, const string attribute_na
 
 tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* parent, xml_node<>* child, unsigned int generation) 
 {
+    //Если предка нет, то степень родства оказалась больше глубины дерева
     if (parent == NULL)
     {
         throw KinshipDegreeException("Степень родства больше глубины дерева");
@@ -113,6 +163,7 @@ tuple<xml_node<>*, xml_node<>*> get_parent_and_child_by_generation(xml_node<>* p
 
 void get_children_at_generation(xml_node<>* parent, unsigned int generation, vector<xml_node<>*>& children) 
 {
+    //Дойти до нужого поколения
     if (generation > 0) 
     {
         for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) 
@@ -129,6 +180,7 @@ void get_children_at_generation(xml_node<>* parent, unsigned int generation, vec
 
 void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins) 
 {
+    //Открыть файл
     std::ofstream outfile(file_name);
 
     if (!outfile.is_open()) 
@@ -146,16 +198,18 @@ void write_cousins_in_file(char* file_name, vector<xml_node<>*> cousins)
 
 void get_cousins(xml_document<> *doc, vector<xml_node<>*> *cousins)
 {
-    
+    //Получить корень дерева
     xml_node<>* root = doc->first_node();
 
+    //Найти человека, чьих кузенов необходимо найти
     xml_node<>* node = find_node_with_attribute(root, "kinship_degree");
 
     unsigned int kinship_degree = validate_node_attribute(node, "kinship_degree");
 
+    //Найти общего предка
     auto [parent, banned_child] = get_parent_and_child_by_generation(node, nullptr, kinship_degree);
 
-
+    //Для всех детей, кроме того, от которого пришли
     for (xml_node<>* child = parent->first_node(); child; child = child->next_sibling()) 
     {
         if (banned_child != child) 
