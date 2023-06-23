@@ -8,7 +8,6 @@
 #include "FindCousinsByGenealogicalTree.h"
 
 
-#ifdef _MSC_VER
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Russian");
@@ -49,44 +48,6 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-#else
-int main() {
-    setlocale(LC_ALL, "Russian");
-    try
-    {
-        //Прочитать файл
-        char* input_file = (char*)"big.xml";
-        string xml = read_xml_file(input_file);
-
-        xml_document<> doc;
-        doc.parse<0>((char*)xml.c_str());
-
-        vector<xml_node<>*> cousins;
-
-        //Найти кузенов
-        get_cousins(&doc, &cousins);
-
-        //Вывести в файл
-        write_cousins_in_file((char*)"output.txt", cousins);
-    }
-    catch (FileNotFoundException ex)
-    {
-        cout << ex.what();
-    }
-    catch (KinshipDegreeException ex)
-    {
-        cout << ex.what();
-    }
-    catch (runtime_error ex)
-    {
-        cout << ex.what();
-    }
-    catch (parse_error ex)
-    {
-        cout << "Ошибка синтаксиса";
-    }
-}
-#endif
 
 
 string read_xml_file(char* file_name) 
