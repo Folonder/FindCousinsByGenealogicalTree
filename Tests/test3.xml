@@ -1,0 +1,22 @@
+<John>
+  <Richard>
+    <Molly>
+		<John kinship_degree="3">
+			<Mike>
+				<Anny_Stark></Anny_Stark>
+			</Mike>
+		</John>
+	</Molly>
+    <William/>
+  </Richard>
+  <Michael>
+    <Molly>
+		<John>
+			<Mike>
+				<Anny_Stark></Anny_Stark>
+			</Mike>
+		</John>
+	</Molly>
+    <William/>
+  </Michael>
+</John>
